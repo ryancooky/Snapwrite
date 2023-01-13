@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* css for the entire page */
+.Main {
   display: flex;
-  flex-direction: column;
+  margin-top: 10vh;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* css for the labels */
+.Main #textbox label {
+  display: block;
+  padding-bottom: 5px;
+  padding-left: 6px;
+  border-bottom: solid 3px yellow;
+  border-right: solid 2px yellow;
+  border-left: solid 2px yellow;
+  font-size: x-large;
+  box-shadow: -5px 0px #F5F5F5
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Main #textbox {
+  width: 40%;
 }
+/* css for the textareas */
+.Main #textbox textarea {
+  width: 100%;
+  height: 240px;
+  margin-bottom: 20px;
+  border: none;
+  box-shadow: -4px 4px #F5F5F5;
+  padding-top: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  resize: none;
+  font-size: large;
+}
+
+/* css for the image upload section */
+.Main #fileupload {
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+  padding: 120px 90px; 
+  box-shadow: 5px -5px #F5F5F5, -5px 5px #F5F5F5;
+  margin-bottom: 10px;
+} 
+
+/* hides the original input  */
+.Main #fileupload input {
+  display: none;
+}
+
+/* css for the display image */
+.Main #fileupload img {
+  max-width: 240px;
+  max-height: auto;
+}
+
+/* reset button */
+.Main #reset {
+  display: none;
+  text-align: center;
+  border: solid 2px black;
+  margin: auto;
+  padding: 5px 10px;
+}
+
+/* reset button on hover */
+ .Main #reset:hover {
+  background-color: lightblue;
+} 
+
+/* reset buton on active */
+ .Main #reset:active {
+  background-color: rgb(0, 166, 255);
+ }
