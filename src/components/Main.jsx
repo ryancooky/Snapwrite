@@ -1,6 +1,8 @@
 import React from 'react'
 import fileupload from '../assets/fileupload.jpg';
 import { useRef, useState } from 'react';
+import Textbox from './Textbox';
+import ImageUploader from './ImageUploader';
 
 const Main = () => {
 
@@ -18,16 +20,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, totam?`;
     const [value2, setValue2] = useState(text2);
 
 //function for setting text in text area 1 and storing it in localStorage (to avoid refresh)
-    const handleChange1 = (e) => { 
-        setValue1(e.target.value1)
-        localStorage.setItem("value1",(e.target.value));
+    const handleChange = (e, key, setter) => { 
+        setter(e.target.value)
+        localStorage.setItem(`value${key}`,(e.target.value));
       } 
-
-//function for setting text in text area 2 and storing it in localStorage (to avoid refresh)
-    const handleChange2 = (e) => {
-        setValue2(e.target.value2)
-        localStorage.setItem("value2",(e.target.value));
-    }
 
 //useEffect which receives text from localStorage when the page refreshes
     React.useEffect (() => {
@@ -77,40 +73,12 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, totam?`;
   return (
     <div className='Main'>
         {/* the left side of the page (uploads the image) */}
-        <section>
-            <form>
-                <div id = "fileupload">
-                {/* image upload icon  */}
-                <label htmlFor="file-input">
-                    <img id="fileimage" src={fileupload} alt="file upload image"/>
-                </label>
-                {/* input that takes the image */}
-                <input accept ="image/*" onChange = {handleUpload} ref={fileInput} id="file-input" type="file" />
-                <p id="format">PNG, JPEG files only</p>
-                {/* this is the new image that is displayed */}
-                {img !=null && <img src={img} id="img" alt="an image is not available"/> } 
-                </div>
-                {/* reset button */}
-                <button id ="reset" onClick={reset}>Reset Image</button>
-            </form>
-        </section>
+        < ImageUploader fileupload = {fileupload} reset = {reset} handleUpload = {handleUpload} img = {img} fileInput = {fileInput} / >
         {/* the  right side of the page which has the text areas */}
-        <section id = "textbox">
-            <form>
-                {/* textarea 1 */}
-                <div>  
-                    <label htmlFor="textarea1">Text Box</label>
-                    <textarea name="textarea1" value={value1} onChange={handleChange1} id="textarea1" cols="50" rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis velit sunt praesentium. Repellat ea, harum corporis animi molestiae reiciendis laborum.</textarea>
-                </div>
-            </form>
-                {/* textarea 2 */}
-                <div>
-                    <label htmlFor="textarea2">Text Box</label>
-                    <textarea name="textarea1" value={value2} onChange={handleChange2} id="textarea2" cols="50" rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus omnis tempora fugit accusantium est, nostrum fuga soluta dolor magni eos?</textarea>             
-                </div>        
-        </section>
+        < Textbox value1 = {value1} value2 = {value2} handleChange = {handleChange} setValue1 = {setValue1} setValue2 = {setValue2} />
     </div>
   )
 }
 
 export default Main
+// couldr pela 

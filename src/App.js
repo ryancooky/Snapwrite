@@ -9,9 +9,7 @@ function App() {
   return (
     // Only the Main component has content but the Header and Footer are included for organization
     <div className="App">
-        < Header />
         < Main />
-        < Footer />
     </div>
   );
 }
