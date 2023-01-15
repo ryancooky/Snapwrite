@@ -25,6 +25,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, totam?`;
         localStorage.setItem(`value${key}`,(e.target.value));
       } 
 
+
 //useEffect which receives text from localStorage when the page refreshes
     React.useEffect (() => {
          const data1 = localStorage.getItem("value1");
@@ -38,13 +39,11 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, totam?`;
 
 //useState and useRef for storing and displaying the image
     const [img, setImg] = useState(null);
-    const fileInput = useRef(null); 
   
 //function which 
     const handleUpload = (e) => {
-        const uploaded = e.target.files;
-        setImg(URL.createObjectURL(new Blob(uploaded)));
-        localStorage.setItem('img', URL.createObjectURL(new Blob(uploaded)));
+        setImg(URL.createObjectURL(new Blob(e.target.files)));
+        localStorage.setItem('img', URL.createObjectURL(new Blob(e.target.files)));
         document.getElementById("format").style.display = "none";
         document.getElementById("fileimage").style.display = "none"; 
         document.getElementById("reset").style.display = "block";   
@@ -73,7 +72,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, totam?`;
   return (
     <div className='Main'>
         {/* the left side of the page (uploads the image) */}
-        < ImageUploader fileupload = {fileupload} reset = {reset} handleUpload = {handleUpload} img = {img} fileInput = {fileInput} / >
+        < ImageUploader fileupload = {fileupload} reset = {reset} handleUpload = {handleUpload} img = {img} / >
         {/* the  right side of the page which has the text areas */}
         < Textbox value1 = {value1} value2 = {value2} handleChange = {handleChange} setValue1 = {setValue1} setValue2 = {setValue2} />
     </div>
@@ -81,4 +80,3 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, totam?`;
 }
 
 export default Main
-// couldr pela 

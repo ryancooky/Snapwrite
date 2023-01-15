@@ -9,7 +9,7 @@ const ImageUploader = (props) => {
             <img id="fileimage" src={props.fileupload} alt="file upload image"/>
         </label>
         {/* input that takes the image */}
-        <input accept ="image/*" onChange = {props.handleUpload} ref={props.fileInput} id="file-input" type="file" />
+        <input accept ="image/*" onChange = {props.handleUpload} id="file-input" type="file" />
         <p id="format">PNG, JPEG files only</p>
         {/* this is the new image that is displayed */}
         {props.img !=null && <img src={props.img} id="img" alt="an image is not available"/> } 
